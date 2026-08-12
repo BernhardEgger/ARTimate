@@ -1,4 +1,23 @@
-# ARTimate
+# AI-Experiment: an augmented reality art project co-created with artificial intelligence
+
+This repository contains the official implementation of the image generation and augmented reality app, as well as a subset of the training data for the paper titles *AI-Experiment: an augmented reality art project co-created with artificial intelligence* which was published at the AI for Visual Arts Workshop (AI4VA) at European Conference on Computer Vision (ECCV)
+
+[Bernhard Egger](https://eggerbernhard.ch/),
+[Hans Furer](https://hansfurer.com/)
+
+![Generated](generated.png)
+
+![App](AIARt.jpg)
+
+![QR](QR.png)
+
+![data](data.png)
+
+![ARTimate](generateApp.png)
+
+![Moderation](moderateApp.png)
+
+
 
 
 ## 🎓 Citation
