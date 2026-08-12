@@ -42,7 +42,7 @@ For a setting were different users are generating their AR apps we also provide 
 
 This template was adapted from Andreea Ardelean - thank you
 
-- [Gen3DSR: Generalizable 3D Scene Reconstruction via Divide and Conquer from a Single View]([https://github.com/dreamgaussian/dreamgaussian](https://github.com/AndreeaDogaru/Gen3DSR))
+- [Gen3DSR: Generalizable 3D Scene Reconstruction via Divide and Conquer from a Single View](https://github.com/AndreeaDogaru/Gen3DSR)
 
 
 ## 📝 License
