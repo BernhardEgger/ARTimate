@@ -5,6 +5,8 @@ This repository contains the official implementation of the image generation and
 [Bernhard Egger](https://eggerbernhard.ch/),
 [Hans Furer](https://hansfurer.com/)
 
+More details on the project, including recordings of the exhibition opening, can be found here: [https://www.ki-experiment.tf.fau.de/](https://www.ki-experiment.tf.fau.de/)
+
 The following image shows the 5 artworks generated in this project in the top row. Each image is paired with a representative example from the training data (bottom row) from the same decade.
 
 <img src="generated.png" alt="Generated Images" />
