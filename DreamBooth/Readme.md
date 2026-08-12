@@ -1,1 +1,1 @@
-This code is just slightly adapted from [https://github.com/ShivamShrirao/diffusers](https://github.com/ShivamShrirao/diffusers) which is based on [https://github.com/huggingface/diffusers](https://github.com/huggingface/diffusers)
+This code is just slightly adapted from [https://github.com/ShivamShrirao/diffusers](https://github.com/ShivamShrirao/diffusers) which is based on [https://github.com/huggingface/diffusers](https://github.com/huggingface/diffusers). The two minor changes are described in the paper.
