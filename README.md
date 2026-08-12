@@ -7,7 +7,7 @@ This repository contains the official implementation of the image generation and
 
 ![Generated](generated.png)
 
-![App](AIARt.jpg)
+![App](AIARt.jpg| width=20)
 
 ![QR](QR.png)
 
