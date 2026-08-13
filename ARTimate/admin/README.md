@@ -1,0 +1,1 @@
+This is a separate admin console, that reads from the projects directory and enables fast screening of the content and deletion of specific apps. It needs write access to the projects directory and should be protected against undesired access (e.g. through .htaccess).
