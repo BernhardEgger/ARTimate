@@ -7,3 +7,5 @@ the targets.mind file needs to be generated for the specific images and this can
 
 
 The script chooses a video for each image randomly when the application is loaded. The detection is encoded in the targets.mind file. Lots of the weird code at the bottom of the script is just to force modern browsers to autoplay the videos.
+
+The code was AI generated with lots of prompting
