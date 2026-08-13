@@ -17,7 +17,7 @@ The images above can be experienced in Augmented Reality. For this, please take 
 <img src="AIARt.jpg" alt="App" width="20%" /> <img src="QR.png" alt="QR" width="20%" />
 </p>
 
-Together with the code in this repository to generate artwork like this, we release a subset of the training data, namely the images of Hans Furer from 1981-1990 under the CC-BY-NC license.
+Together with the code in this repository to generate artwork like this, we release a subset of the training data, namely the images of Hans Furer from 1981-1990 under the CC-BY-NC license here: [1981-1990.zip](1981-1990.zip) .
 
 <p align="center">
 <img src="data.png" alt="Data" />
