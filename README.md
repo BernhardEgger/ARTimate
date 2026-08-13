@@ -11,7 +11,7 @@ The following image shows the 5 artworks generated in this project in the top ro
 
 <img src="generated.png" alt="Generated Images" />
 
-The images above can be experienced in Augmented Reality. For this, please take your phone and scan the QR code and then "scan" above images. The underlying app is based on html and javascript and can be run on any webserver. The webapp was developed with assistance of Gemini.
+The images above can be experienced in Augmented Reality. For this, please take your phone and scan the QR code and then "scan" above images. The underlying app is based on html and javascript and can be run on any webserver. The webapp was developed with assistance of Gemini and the source Code can be found under [AIARt](AIARt).
 
 <p align="center">
 <img src="AIARt.jpg" alt="App" width="20%" /> <img src="QR.png" alt="QR" width="20%" />
@@ -23,7 +23,7 @@ Together with the code in this repository to generate artwork like this, we rele
 <img src="data.png" alt="Data" />
 </p>
 
-In addition to the simple app that shows the video above we built a small tool that enables to build your own AR experience based on images and corresponding videos. The following two tools need a webserver that runs php, both of them were built using antigravity and Gemini.
+In addition to the simple app that shows the video above we built a small tool that enables to build your own AR experience based on images and corresponding videos. The following two tools need a webserver that runs php, both of them were built using antigravity and Gemini and can be found under [ARTimate](ARTimate).
 
 ![ARTimate](generateApp.png)
 
