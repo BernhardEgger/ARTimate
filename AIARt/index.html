@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://eggerbernhard.ch/AIARt/aframe_1.5.0.min.js"></script>
+    <script src="https://eggerbernhard.ch/AIARt/aframe-extras_7.0.0.min.js"></script>
+    <script src="https://eggerbernhard.ch/AIARt/mindar-image-aframe_1.2.5.prod.js"></script>
+    <style>
+      .a-enter-vr-button {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: https://eggerbernhard.ch/AIARt/targets.mind; maxTrack: 10"
+             color-space="sRGB"
+             renderer="colorManagement: true, physicallyCorrectLights"
+             vr-mode-ui="enabled: false"
+             device-orientation-permission-ui="enabled: false">
+
+      <a-assets id="assets-container"></a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- empty containers, JS will decide whether to add <a-video> or <a-gltf-model> -->
+      <a-entity mindar-image-target="targetIndex: 0" id="target-0053"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 1" id="target-0054"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 2" id="target-0056"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 3" id="target-0057"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 4" id="target-0058"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 5" id="target-0059"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 6" id="target-0060"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 7" id="target-0061"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 8" id="target-0062"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 9" id="target-0063"></a-entity>
+    </a-scene>
+
+    <script>
+    const baseUrl = "https://eggerbernhard.ch/AIARt/";
+
+    // Files per folder (both mp4 and glb)
+    const mediaFiles = {
+      "TRD_23_037-11_0053": ["0.mp4","1.mp4","2.mp4","3.mp4","5.mp4","6.mp4","7.mp4"],
+      "TRD_23_037-11_0054": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4"],
+      "TRD_23_037-11_0056": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4","5.mp4"],
+      "TRD_23_037-11_0057": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4","5.mp4","6_watermark_timotei.mp4","7.mp4"],
+      "TRD_23_037-11_0058": ["0.mp4","1.mp4","2.mp4","0.glb"],
+      "TRD_23_037-11_0059": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4","5.mp4"],
+      "TRD_23_037-11_0060": ["0.mp4","1.mp4","2.mp4"],
+      "TRD_23_037-11_0061": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4"],
+      "TRD_23_037-11_0062": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4"],
+      "TRD_23_037-11_0063": ["0.mp4","1.mp4","2.mp4","3.mp4","4.mp4","5.mp4"]
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const assets = document.getElementById("assets-container");
+
+      Object.keys(mediaFiles).forEach(folder => {
+        const files = mediaFiles[folder];
+        const randomFile = files[Math.floor(Math.random() * files.length)];
+        const fullPath = `${baseUrl}${folder}/${folder}_${randomFile}`;
+        const suffix = folder.split("_").pop(); // e.g. "0053"
+        const target = document.getElementById(`target-${suffix}`);
+
+        if (!target) return;
+
+        if (randomFile.endsWith(".mp4")) {
+          // video asset
+          const vid = document.createElement("video");
+          vid.setAttribute("id", folder);
+          vid.setAttribute("src", fullPath);
+          vid.setAttribute("autoplay", "");
+          vid.setAttribute("muted", "");
+          vid.setAttribute("loop", "");
+          vid.setAttribute("playsinline", "");
+          assets.appendChild(vid);
+
+          // video entity
+          const aVideo = document.createElement("a-video");
+          aVideo.setAttribute("src", `#${folder}`);
+          aVideo.setAttribute("position", "0 0 0");
+          aVideo.setAttribute("height", "1");
+          aVideo.setAttribute("width", "1");
+          target.appendChild(aVideo);
+
+        } else if (randomFile.endsWith(".glb")) {
+          // glb asset
+          const model = document.createElement("a-asset-item");
+          model.setAttribute("id", folder);
+          model.setAttribute("src", fullPath);
+          assets.appendChild(model);
+
+          // model entity
+          const aModel = document.createElement("a-gltf-model");
+          aModel.setAttribute("src", `#${folder}`);
+          aModel.setAttribute("position", "0 0 0");
+          aModel.setAttribute("scale", "0.5 0.5 0.5");
+          aModel.setAttribute("animation", "property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear");
+          target.appendChild(aModel);
+        }
+      });
+    });
+
+    // Handle autoplay & AR events
+    document.querySelector("a-scene").addEventListener("loaded", () => {
+      const vids = document.querySelectorAll("video");
+
+      vids.forEach((vid) => {
+        vid.play().catch(() => {
+          const resume = () => {
+            vid.play();
+            document.body.removeEventListener("click", resume);
+            document.body.removeEventListener("touchstart", resume);
+          };
+          document.body.addEventListener("click", resume);
+          document.body.addEventListener("touchstart", resume);
+        });
+
+        const aVideo = document.querySelector(`a-video[src="#${vid.id}"]`);
+        if (!aVideo) return;
+        const target = aVideo.parentElement;
+
+        target.addEventListener("targetFound", () => {
+          vid.currentTime = 0;
+          vid.play();
+        });
+
+        target.addEventListener("targetLost", () => {
+          vid.pause();
+        });
+      });
+    });
+    </script>
+  </body>
+</html>
